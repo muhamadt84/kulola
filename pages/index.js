@@ -145,8 +145,8 @@ export default function Home() {
             className=" w-[85rem] pb-12"
           >
             {review?.map(row => (
-              <div className=" px-2">
-                <div key={row} className=" bg-[#F1F8F2] p-8 py-12 border border-gray-500 rounded-xl w-[27rem]">
+              <div  key={row} className=" px-2">
+                <div className=" bg-[#F1F8F2] p-8 py-12 border border-gray-500 rounded-xl w-[27rem]">
                   <div className=" flex space-x-4">
                     <Image
                       src={Avatar}
