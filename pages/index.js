@@ -24,6 +24,7 @@ import PrevArrow from "@assets/PrevArrow.svg"
 import NextArrow from "@assets/NextArrow.svg"
 
 export default function Home() {
+  const host = [1, 2, 3, 4, 5, 6, 7, 8]
   const review = [1, 2, 3, 4, 5, 6]
   const settings = {
     dots: true,
@@ -144,15 +145,18 @@ export default function Home() {
             {...settings}
             className=" w-[85rem] pb-12"
           >
-            {review?.map(row => (
-              <div  key={row} className=" px-2">
+            {host?.map(row => (
+              <div
+                key={row}
+                className=" px-2"
+              >
                 <div className=" bg-[#F1F8F2] p-8 py-12 border border-gray-500 rounded-xl w-[27rem]">
                   <div className=" flex space-x-4">
                     <Image
                       src={Avatar}
                       alt="Avatar"
                       width={100}
-                      height={100}
+                      height="auto"
                       className=" rounded-xl"
                     />
                     <div>
@@ -173,7 +177,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className=" mt-4">
-                    <span className=" font-medium text-xl">John Lafrey</span>
+                    <span className=" font-medium text-xl">John Lafrey {row}</span>
                     <span className=" italic font-light"> (372 Transaksi)</span>
                   </div>
                   <div className=" italic font-light mt-2">Bandung, Jawa Barat</div>
