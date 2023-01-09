@@ -1,6 +1,5 @@
+import { useState } from "react";
 import Image from "next/image"
-
-
 
 import Slider from "react-slick";
 // Import css files
@@ -23,7 +22,14 @@ import Animal from "@assets/Animal.svg"
 import PrevArrow from "@assets/PrevArrow.svg"
 import NextArrow from "@assets/NextArrow.svg"
 
+import ModalRegister from "@components/modals/Register"
+import ModalLogin from "@components/modals/Login"
+import ModalHost from "@components/modals/Host"
+
 export default function Home() {
+  const [modalRegister, setModalRegister] = useState(false)
+  const [modalLogin, setModalLogin] = useState(false)
+  const [modalHost, setModalHost] = useState(false)
   const host = [1, 2, 3, 4, 5, 6, 7, 8]
   const review = [1, 2, 3, 4, 5, 6]
   const settings = {
@@ -59,9 +65,9 @@ export default function Home() {
                 <div className=" text-2xl text-yellow-300 mt-2">Daur ulang <span className=" text-white font-light">sampah</span></div>
                 <div className=" text-2xl text-yellow-300 mt-2">Membangun <span className=" text-white font-light">penghijauan</span></div>
                 <div className=" flex flex-row items-center  mt-6 space-x-4">
-                  <div className=" text-xl text-yellow-300 font-light">Bergabung</div>
+                  <div className=" text-xl text-yellow-300 font-light" onClick={() => setModalLogin(true)}>Bergabung</div>
                   <div className=" border-l-2 border-white">&nbsp;</div>
-                  <button className=" p-1 px-3 bg-green-600 text-white rounded-lg border border-green-600 hover:bg-transparent hover:text-green-600 duration-300">Buka Peta</button>
+                  <button onClick={() => setModalRegister(true)} className=" p-1 px-3 bg-green-600 text-white rounded-lg border border-green-600 hover:bg-transparent hover:text-green-600 duration-300">Buka Peta</button>
                 </div>
               </div>
               <Image
@@ -92,7 +98,7 @@ export default function Home() {
             <div className=" text-xl">
               Sekarang kamu dapat memilah sampah organik di lingkungan kamu juga mengetahui partner Kulola terdekat!
             </div>
-            <button className=" p-2 w-60 bg-yellow-400 text-white rounded-2xl border border-yellow-400 hover:bg-white hover:text-yellow-400 duration-300 focus:outline-none">Lihat bagaimana caranya!</button>
+            <button onClick={() => setModalHost(true)} className=" p-2 w-60 bg-yellow-400 text-white rounded-2xl border border-yellow-400 hover:bg-white hover:text-yellow-400 duration-300 focus:outline-none">Lihat bagaimana caranya!</button>
             <div className=" grid grid-cols-2 gap-16">
               <div className=" flex flex-col items-center space-y-8">
                 <Farmer1 />
@@ -217,6 +223,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {modalRegister ?
+        <ModalRegister onClick={() => setModalRegister(!modalRegister)} />
+        : null}
+
+      {modalLogin ?
+        <ModalLogin onClick={() => setModalLogin(!modalLogin)} />
+        : null}
+
+      {modalHost ?
+        <ModalHost onClick={() => setModalHost(!modalHost)} />
+        : null}
     </Layout>
   )
 }
